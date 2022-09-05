@@ -1,5 +1,5 @@
 import functools
-import cherrypy
+from fastapi import HTTPException
 
 def exception_decoratord(func):
     @functools.wraps(func)
@@ -7,7 +7,7 @@ def exception_decoratord(func):
         try:
             return func(*args, **kw)
         except ServiceException as e:
-            raise cherrypy.HTTPError(e.code, e.message)
+            raise HTTPException(e.code, e.message)
 
     return wrapper
 
