@@ -5,9 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
-.idea/misc.xml
-.idea/turbo-monitor.xml
 
+.idea/misc.xml
 # Distribution / packaging
 .Python
 build/
