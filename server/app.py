@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter
 from controller.HelloWorldController import HelloWorldController
 from controller.SrsController import SRSController
 from controller.VideoController import VideoController
+from service.LogService import log_service
 
 app = FastAPI()
 
@@ -17,5 +18,6 @@ app.include_router(video_controller.router)
 
 @app.get("/")
 async def root():
+    log_service.info("Hello World!")
     return {"message": "This is turbo-monitor's server"}
 
