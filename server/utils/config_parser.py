@@ -10,5 +10,8 @@ def get_config(config_file=get_path()):
     parser = configparser.ConfigParser()
     parser.read(config_file)
     _conf_strings = [(key, str(value)) for key, value in parser.items('config')]
-
-    return dict(_conf_strings )
+    _srs_conf_strings = [(key, str(value)) for key, value in parser.items('srs')]
+    return {
+        'config': dict(_conf_strings),
+        'srs': dict(_srs_conf_strings)
+    }
