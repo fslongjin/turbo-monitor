@@ -1,3 +1,5 @@
+import uvicorn
+
 from fastapi import FastAPI, APIRouter
 from controller.HelloWorldController import HelloWorldController
 from controller.SrsController import SRSController
@@ -21,3 +23,7 @@ async def root():
     log_service.info("Hello World!")
     return {"message": "This is turbo-monitor's server"}
 
+if __name__ == '__main__':
+    from service.SrsService import srs_service
+    srs_service.generate_srs_config()
+    uvicorn.run("app:app", host="0.0.0.0", port=8085, reload=True)
