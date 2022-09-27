@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+from service.SrsService import srs_service
 
 class SRSController:
     def __init__(self, router: APIRouter):
