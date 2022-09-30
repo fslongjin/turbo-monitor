@@ -2,11 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from utils import config_parser
+from dao import get_url
 
 from entity import car, video
 
-engine = create_engine(config_parser.get_db_url())
+engine = create_engine(get_url.get_db_url())
 Base = declarative_base(engine)
 
 
