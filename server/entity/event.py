@@ -20,7 +20,3 @@ class Event(Base):
     type = Column(String(length=20), nullable=False)
     # 描述
     description = Column(String(length=100))
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

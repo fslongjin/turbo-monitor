@@ -27,7 +27,3 @@ class Car(Base):
     devices = relationship('Device', backref='cars')
     # 出现的录像
     videos = relationship('Video', backref='cars')
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

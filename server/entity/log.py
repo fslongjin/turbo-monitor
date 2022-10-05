@@ -8,7 +8,7 @@ engine = create_engine(get_url.get_db_url())
 Base = declarative_base(engine)
 
 
-# 车辆信息
+# 日志信息
 class Log(Base):
     __tablename__ = "log"
 
@@ -20,7 +20,3 @@ class Log(Base):
     content = Column(String(length=100), nullable=False)
     # 创建时间
     created_time = Column(String(length=20), nullable=False)
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

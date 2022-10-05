@@ -20,7 +20,3 @@ class PersonInVideo(Base):
     person_id = Column(Integer, ForeignKey(person.Person.id, ondelete="RESTRICT"))
     # 录像编号
     video_id = Column(Integer, ForeignKey(video.Video.id, ondelete="RESTRICT"))
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

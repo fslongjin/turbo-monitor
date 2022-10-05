@@ -35,7 +35,3 @@ class Video(Base):
     users = relationship('User', backref='videos')
     # 查看的管理员
     managers = relationship('Manager', backref='videos')
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

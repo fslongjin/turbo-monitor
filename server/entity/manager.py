@@ -22,7 +22,3 @@ class Manager(Base):
     name = Column(String(length=20), nullable=False)
     # 最近登录时间
     last_time = Column(String(length=20))
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

@@ -23,7 +23,3 @@ class Area(Base):
 
     # 所在的monitor
     monitors = relationship('Monitor', backref='areas')
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

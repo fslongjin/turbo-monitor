@@ -20,7 +20,3 @@ class CarInVideo(Base):
     car_id = Column(Integer, ForeignKey(car.Car.id, ondelete="RESTRICT"))
     # 录像编号
     video_id = Column(Integer, ForeignKey(video.Video.id, ondelete="RESTRICT"))
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

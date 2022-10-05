@@ -10,7 +10,7 @@ engine = create_engine(get_url.get_db_url())
 Base = declarative_base(engine)
 
 
-# 车辆信息
+# 管理员查看录像记录
 class ManagerCheckVideo(Base):
     __tablename__ = "manager_check_video"
 
@@ -20,7 +20,3 @@ class ManagerCheckVideo(Base):
     user_id = Column(Integer, ForeignKey(manager.Manager.id, ondelete="RESTRICT"))
     # 录像编号
     video_id = Column(Integer, ForeignKey(video.Video.id, ondelete="RESTRICT"))
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)

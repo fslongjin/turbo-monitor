@@ -14,7 +14,3 @@ class Monitor(Base):
 
     # 编号
     id = Column(Integer, primary_key=True, autoincrement=True)
-
-
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(engine)
