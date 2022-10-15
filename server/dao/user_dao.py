@@ -30,7 +30,6 @@ class UserDao(base_bao.BaseDao):
     def update_user_last_time(self, _account):
         the_user = self.query_user(_account)
         user.last_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-        self.session.add(the_user)
         self.session.commit()
 
     def delete_user(self, _account):
