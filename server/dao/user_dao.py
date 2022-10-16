@@ -29,7 +29,17 @@ class UserDao(base_bao.BaseDao):
 
     def update_user_last_time(self, _account):
         the_user = self.query_user(_account)
-        user.last_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        the_user.last_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        self.session.commit()
+
+    def update_user_name(self, _account, _name):
+        the_user = self.query_user(_account)
+        the_user.name = _name
+        self.session.commit()
+
+    def update_user_password(self, _account, _password):
+        the_user = self.query_user(_account)
+        the_user.password = _password
         self.session.commit()
 
     def delete_user(self, _account):
