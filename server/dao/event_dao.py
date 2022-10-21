@@ -24,17 +24,18 @@ class EventDao(base_bao.BaseDao):
         self.session.commit()
 
     def query_event(self, _date, _type):
-        the_event=self.session.query(event.Event).filter(event.Event.date==_date, event.Event.type==_type).first()
+        the_event = self.session.query(event.Event).filter(event.Event.date == _date, event.Event.type == _type).first()
         return the_event
 
     def update_description(self, _date, _type, _description):
-        the_event=self.query_event(_date, _type)
-        the_event.description=_description
+        the_event = self.query_event(_date, _type)
+        the_event.description = _description
         self.session.commit()
 
     def delete_event(self, _date, _type, _description):
-        the_event=self.query_event(_date, _type)
+        the_event = self.query_event(_date, _type)
         self.session.delete(the_event)
         self.session.commit()
+
 
 event_dao = EventDao.get_instance()

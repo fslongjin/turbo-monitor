@@ -24,12 +24,13 @@ class LogDao(base_bao.BaseDao):
         self.session.commit()
 
     def query_log(self, _level):
-        the_log=self.session.query(log.Log).filter(log.Log.level==_level).first()
+        the_log = self.session.query(log.Log).filter(log.Log.level == _level).first()
         return the_log
 
     def delete_log(self, _level, _content, _create_time):
-        the_log=self.query_log(_level)
+        the_log = self.query_log(_level)
         self.session.delete(the_log)
         self.session.commit()
+
 
 log_dao = LogDao.get_instance()

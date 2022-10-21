@@ -14,3 +14,8 @@ class Device(Base):
 
     # 编号
     id = Column(Integer, primary_key=True, autoincrement=True)
+    # 名称
+    name = Column(String(length=20), unique=True)
+
+# Base.metadata.drop_all(engine)
+# Base.metadata.create_all(engine)

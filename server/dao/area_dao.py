@@ -27,8 +27,9 @@ class AreaDao(base_bao.BaseDao):
         return the_area
 
     def delete_area(self, _monitor_id):
-        the_area=self.query_area(_monitor_id)
+        the_area = self.query_area(_monitor_id)
         self.session.delete(the_area)
-        self.session.commit
+        self.session.commit()
 
-area_dao=AreaDao.get_instance()
+
+area_dao = AreaDao.get_instance()

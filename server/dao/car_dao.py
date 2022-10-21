@@ -20,7 +20,7 @@ class CarDao(base_bao.CarDao):
     def add_car(self, _number, _device_id):
         new_car = car.Car(number=_number, device_id=_device_id)
         self.session.add(new_car)
-        self.session.commit
+        self.session.commit()
 
     def query_car(self, _number):
         the_car = self.session.query(car.Car).filter(car.Car.number == _number).first()
@@ -28,14 +28,13 @@ class CarDao(base_bao.CarDao):
 
     def update_car_device_id(self, _number, _device_id):
         the_car = self.query_car(_number)
-        the_car.device_id=_device_id
-        self.session.commit
+        the_car.device_id = _device_id
+        self.session.commit()
 
     def delete_car(self, _number):
         the_car = self.query_car(_number)
         self.session.delete(the_car)
-        self.session.commit
-
+        self.session.commit()
 
 
 car_dao = CarDao.get_instance()
