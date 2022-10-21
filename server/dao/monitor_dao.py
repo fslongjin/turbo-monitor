@@ -1,7 +1,7 @@
+import threading
+
 from dao import base_bao
 from entity import monitor
-import time
-import threading
 
 
 class MonitorDao(base_bao.BaseDao):
@@ -25,6 +25,14 @@ class MonitorDao(base_bao.BaseDao):
     def query_monitor_by_name(self, _name):
         the_monitor = self.session.query(monitor.Monitor).filter(monitor.Monitor.name == _name).first()
         return the_monitor
+
+    def get_video_list_by_name(self, _name):
+        the_monitor = self.query_monitor_by_name(_name)
+        return the_monitor.videos
+
+    def get_area_list_by_name(self, _name):
+        the_monitor = self.query_monitor_by_name(_name)
+        return the_monitor.areas
 
 
 device_dao = MonitorDao.get_instance()

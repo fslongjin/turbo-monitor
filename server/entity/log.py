@@ -23,7 +23,7 @@ class Log(Base):
 
     def __repr__(self):
         _id = self.id
-        _level=self.level
-        _content=self.content
-        _created_time=self.created_time
+        _level = self.level
+        _content = self.content
+        _created_time = self.created_time
         return f"Log: id:{_id}, level:{_level}, content:{_content}, created_time:{_created_time}"

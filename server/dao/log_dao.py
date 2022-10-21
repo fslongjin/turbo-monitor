@@ -1,7 +1,8 @@
+import threading
+import time
+
 from dao import base_bao
 from entity import log
-import time
-import threading
 
 
 class LogDao(base_bao.BaseDao):
@@ -23,12 +24,16 @@ class LogDao(base_bao.BaseDao):
         self.session.add(new_log)
         self.session.commit()
 
-    def query_log(self, _level):
-        the_log = self.session.query(log.Log).filter(log.Log.level == _level).first()
+    def query_log_by_id(self, _id):
+        the_log = self.session.query(log.Log).filter(log.Log.id == _id).first()
         return the_log
 
-    def delete_log(self, _level, _content, _create_time):
-        the_log = self.query_log(_level)
+    def query_logs_by_level(self, _level):
+        the_logs = self.session.query(log.Log).filter(log.Log.level == _level).all()
+        return the_logs
+
+    def delete_log(self, _id, _create_time):
+        the_log = self.query_log_by_id(_id)
         self.session.delete(the_log)
         self.session.commit()
 

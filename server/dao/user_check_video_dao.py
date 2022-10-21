@@ -1,7 +1,7 @@
+import threading
+
 from dao import base_bao
 from entity import user_check_video
-import time
-import threading
 
 
 class UserCheckVideoDao(base_bao.BaseDao):
@@ -22,14 +22,25 @@ class UserCheckVideoDao(base_bao.BaseDao):
         self.session.add(new_user_check_video)
         self.session.commit()
 
-    def query_user_check_video(self, _user_id):
-        the_user_check_video = self.session.query(user_check_video.UserCheckVideo).filter(
-            user_check_video.UserCheckVideo.user_id == _user_id).first()
-        return the_user_check_video
+    def query_users_by_video_id(self, _video_id):
+        the_users = self.session.query(user_check_video.UserCheckVideo).filter(
+            user_check_video.UserCheckVideo.video_id == _video_id).all()
+        return the_users
 
-    def delete(self, _user_id, _video_id):
-        the_user_check_video = self.query_user_check_video(_user_id)
-        self.session.delete(the_user_check_video)
+    def query_videos_by_user_id(self, _user_id):
+        the_videos = self.session.query(user_check_video.UserCheckVideo).filter(
+            user_check_video.UserCheckVideo.user_id == _user_id).all()
+        return the_videos
+
+    def query_record_by_user_and_video(self, _user_id, _video_id):
+        the_record = self.session.query(user_check_video.UserCheckVideo).filter(
+            user_check_video.UserCheckVideo.user_id == _user_id,
+            user_check_video.UserCheckVideo.video_id == _video_id).first()
+        return the_record
+
+    def delete_record_by_user_and_video(self, _user_id, _video_id):
+        the_record = self.query_record_by_user_and_video(_user_id, _video_id)
+        self.session.delete(the_record)
         self.session.commit()
 
 

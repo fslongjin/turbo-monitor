@@ -1,7 +1,7 @@
+import threading
+
 from dao import base_bao
 from entity import car_in_video
-import time
-import threading
 
 
 class CarInVideoDao(base_bao.CarInVideoDao):
@@ -22,14 +22,24 @@ class CarInVideoDao(base_bao.CarInVideoDao):
         self.session.add(new_car_in_video)
         self.session.commit()
 
-    def query_car_in_video(self, _video_id):
-        the_car_in_video = self.session.query(car_in_video.CarInVideo).filter(
-            car_in_video.CarInVideo.video_id == _video_id).first()
-        return the_car_in_video
+    def query_cars_by_video_id(self, _video_id):
+        the_cars = self.session.query(car_in_video.CarInVideo).filter(
+            car_in_video.CarInVideo.video_id == _video_id).all()
+        return the_cars
 
-    def delete_car_in_video(self, _video_id, _car_id):
-        the_car_in_video = self.query_car_in_video(_car_id)
-        self.session.delete(the_car_in_video)
+    def query_videos_by_car_id(self, _car_id):
+        the_videos = self.session.query(car_in_video.CarInVideo).filter(
+            car_in_video.CarInVideo.car_id == _car_id).all()
+        return the_videos
+
+    def query_record_by_car_and_video(self, _car_id, _video_id):
+        the_record = self.session.query(car_in_video.CarInVideo).filter(
+            car_in_video.CarInVideo.car_id == _car_id, car_in_video.CarInVideo.video_id == _video_id).first()
+        return the_record
+
+    def delete_record_by_car_and_video(self, _car_id, _video_id):
+        the_record = self.query_record_by_car_and_video(_car_id, _video_id)
+        self.session.delete(the_record)
         self.session.commit()
 
 

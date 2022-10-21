@@ -1,7 +1,8 @@
+import threading
+import time
+
 from dao import base_bao
 from entity import manager
-import time
-import threading
 
 
 class ManagerDao(base_bao.BaseDao):
@@ -42,7 +43,7 @@ class ManagerDao(base_bao.BaseDao):
         the_manager.password = _password
         self.session.commit()
 
-    def delete_manager(self, _account):
+    def delete_manager_by_account(self, _account):
         the_manager = self.query_manager_by_account(_account)
         self.session.delete(the_manager)
         self.session.commit()

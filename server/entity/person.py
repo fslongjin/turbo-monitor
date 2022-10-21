@@ -16,6 +16,8 @@ class Person(Base):
 
     # 编号
     id = Column(Integer, primary_key=True, autoincrement=True)
+    # 名字
+    name = Column(String(length=10), nullable=False)
     # 人脸信息
     face_information = Column(String(length=1000), nullable=False)
     # 设别本人员的门禁设备
@@ -25,11 +27,9 @@ class Person(Base):
 
     # 识别设备
     devices = relationship('Device', backref='persons')
-    # 出现的录像
-    videos = relationship('Video', backref='persons')
 
     def __repr__(self):
         _id = self.id
-        _face_information=self.face_information
-        _device_id=self.device_id
+        _face_information = self.face_information
+        _device_id = self.device_id
         return f"Person: id:{_id}, face_information:{_face_information}, device_id:{_device_id}"

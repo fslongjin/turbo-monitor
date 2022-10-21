@@ -1,7 +1,8 @@
+import threading
+import time
+
 from dao import base_bao
 from entity import user
-import time
-import threading
 
 
 class UserDao(base_bao.BaseDao):
@@ -42,7 +43,7 @@ class UserDao(base_bao.BaseDao):
         the_user.password = _password
         self.session.commit()
 
-    def delete_user(self, _account):
+    def delete_user_by_account(self, _account):
         the_user = self.query_user_by_account(_account)
         self.session.delete(the_user)
         self.session.commit()
