@@ -20,3 +20,9 @@ class UserCheckVideo(Base):
     user_id = Column(Integer, ForeignKey(user.User.id, ondelete="RESTRICT"))
     # 录像编号
     video_id = Column(Integer, ForeignKey(video.Video.id, ondelete="RESTRICT"))
+
+    def __repr__(self):
+        _id = self.id
+        _user_id=self.user_id
+        _video_id=self.video_id
+        return f"UserCheckVideo: id:{_id}, user_id:{_user_id}, video_id:{_video_id}"

@@ -22,3 +22,10 @@ class Manager(Base):
     name = Column(String(length=20), nullable=False)
     # 最近登录时间
     last_time = Column(String(length=20))
+
+    def __repr__(self):
+        _id = self.id
+        _account=self.account
+        _name=self.name
+        _last_time=self.last_time
+        return f"Manager: id:{_id}, account:{_account}, name:{_name},last_time={_last_time}"

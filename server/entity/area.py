@@ -23,3 +23,8 @@ class Area(Base):
 
     # 所在的monitor
     monitors = relationship('Monitor', backref='areas')
+
+    def __repr__(self):
+        _id=self.id
+        _monitor_id = self.monitor_id
+        return f"Area: id:{_id}, monitor_id:{_monitor_id}"

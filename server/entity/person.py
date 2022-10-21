@@ -27,3 +27,9 @@ class Person(Base):
     devices = relationship('Device', backref='persons')
     # 出现的录像
     videos = relationship('Video', backref='persons')
+
+    def __repr__(self):
+        _id = self.id
+        _face_information=self.face_information
+        _device_id=self.device_id
+        return f"Person: id:{_id}, face_information:{_face_information}, device_id:{_device_id}"

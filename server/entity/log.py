@@ -20,3 +20,10 @@ class Log(Base):
     content = Column(String(length=100), nullable=False)
     # 创建时间
     created_time = Column(String(length=20), nullable=False)
+
+    def __repr__(self):
+        _id = self.id
+        _level=self.level
+        _content=self.content
+        _created_time=self.created_time
+        return f"Log: id:{_id}, level:{_level}, content:{_content}, created_time:{_created_time}"

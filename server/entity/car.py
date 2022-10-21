@@ -27,3 +27,9 @@ class Car(Base):
     devices = relationship('Device', backref='cars')
     # 出现的录像
     videos = relationship('Video', backref='cars')
+
+    def __repr__(self):
+        _id = self.id
+        _number=self.number
+        _device_id=self.device_id
+        return f"Car: id:{_id}, number:{_number}, device_id:{_device_id}"

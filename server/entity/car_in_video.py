@@ -20,3 +20,9 @@ class CarInVideo(Base):
     car_id = Column(Integer, ForeignKey(car.Car.id, ondelete="RESTRICT"))
     # 录像编号
     video_id = Column(Integer, ForeignKey(video.Video.id, ondelete="RESTRICT"))
+
+    def __repr__(self):
+        _id = self.id
+        _car_id=self.car_id
+        _video_id=self.video_id
+        return f"CarInVideo: id:{_id}, car_id:{_car_id}, video_id:{_video_id}"
