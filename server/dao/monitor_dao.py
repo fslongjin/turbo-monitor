@@ -17,8 +17,14 @@ class MonitorDao(base_bao.BaseDao):
                 self.__instance = MonitorDao()
             return self.__instance
 
+    def add_monitor(self, _name):
+        new_monitor = monitor.Monitor(name=_name)
+        self.session.add(new_monitor)
+        self.session.commit()
 
-
+    def query_monitor_by_name(self, _name):
+        the_monitor = self.session.query(monitor.Monitor).filter(monitor.Monitor.name == _name).first()
+        return the_monitor
 
 
 device_dao = MonitorDao.get_instance()

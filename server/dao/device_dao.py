@@ -18,6 +18,4 @@ class DeviceDao(base_bao.BaseDao):
             return self.__instance
 
 
-
-
 device_dao = DeviceDao.get_instance()
