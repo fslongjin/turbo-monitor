@@ -17,10 +17,10 @@ class Monitor(Base):
     # 名称
     name = Column(String(length=20), nullable=False, unique=True)
 
-# Base.metadata.drop_all(engine)
-# Base.metadata.create_all(engine)
-
     def __repr__(self):
         _id = self.id
-        _name=self.name
+        _name = self.name
         return f"Monitor: id:{_id}, name:{_name}"
+
+# Base.metadata.drop_all(engine)
+# Base.metadata.create_all(engine)

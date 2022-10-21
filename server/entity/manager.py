@@ -25,7 +25,7 @@ class Manager(Base):
 
     def __repr__(self):
         _id = self.id
-        _account=self.account
-        _name=self.name
-        _last_time=self.last_time
+        _account = self.account
+        _name = self.name
+        _last_time = self.last_time
         return f"Manager: id:{_id}, account:{_account}, name:{_name},last_time={_last_time}"

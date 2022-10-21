@@ -23,7 +23,7 @@ class Event(Base):
 
     def __repr__(self):
         _id = self.id
-        _date=self.date
-        _type=self.type
-        _description=self.description
+        _date = self.date
+        _type = self.type
+        _description = self.description
         return f"Event: id:{_id}, date:{_date}, type:{_type}, description:{_description}"

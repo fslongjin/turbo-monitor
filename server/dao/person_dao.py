@@ -1,7 +1,7 @@
+import threading
+
 from dao import base_bao
 from entity import person
-import time
-import threading
 
 
 class PersonDao(base_bao.BaseDao):
@@ -17,30 +17,33 @@ class PersonDao(base_bao.BaseDao):
                 self.__instance = PersonDao()
             return self.__instance
 
-    def add_person(self, _face_information, _device_id):
-        new_person = person.Person(face_information=_face_information, device_id=_device_id)
+    def add_person(self, _name, _face_information, _device_id):
+        new_person = person.Person(name=_name, face_information=_face_information, device_id=_device_id)
         self.session.add(new_person)
         self.session.commit()
 
-    def query_person(self, _face_information):
+    def query_person_by_face_information(self, _face_information):
         the_person = self.session.query(person.Person).filter(
             person.Person.face_information == _face_information).first()
         return the_person
 
-    def update_person_face_information(self, _face_information):
-        the_person = self.session.query(_face_information)
-        the_person.face_information = _face_information
-        self.session.commit()
-
-    def update_person_device_id(self, _device_id):
-        the_person = self.session.query(_device_id)
+    def update_person_device_id(self, _face_information, _device_id):
+        the_person = self.query_person_by_face_information(_face_information)
         the_person.device_id = _device_id
         self.session.commit()
 
-    def delete_person(self, _face_information, _device_id):
-        the_person = self.session.query(_device_id)
+    def delete_person(self, _face_information):
+        the_person = self.query_person_by_face_information(_face_information)
         self.session.delete(the_person)
         self.session.commit()
+
+    def get_device_obj_by_face_information(self, _face_information):
+        the_person = self.query_person_by_face_information(_face_information)
+        return the_person.devices
+
+    def query_person_id_by_face_information(self, _face_information):
+        the_person = self.query_person_by_face_information(_face_information)
+        return the_person.id
 
 
 person_dao = PersonDao.get_instance()

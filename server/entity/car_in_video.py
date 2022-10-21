@@ -23,6 +23,6 @@ class CarInVideo(Base):
 
     def __repr__(self):
         _id = self.id
-        _car_id=self.car_id
-        _video_id=self.video_id
+        _car_id = self.car_id
+        _video_id = self.video_id
         return f"CarInVideo: id:{_id}, car_id:{_car_id}, video_id:{_video_id}"

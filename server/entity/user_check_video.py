@@ -23,6 +23,6 @@ class UserCheckVideo(Base):
 
     def __repr__(self):
         _id = self.id
-        _user_id=self.user_id
-        _video_id=self.video_id
+        _user_id = self.user_id
+        _video_id = self.video_id
         return f"UserCheckVideo: id:{_id}, user_id:{_user_id}, video_id:{_video_id}"
