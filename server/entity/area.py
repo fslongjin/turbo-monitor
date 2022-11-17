@@ -16,6 +16,8 @@ class Area(Base):
 
     # 编号
     id = Column(Integer, primary_key=True, autoincrement=True)
+    # 名称
+    name = Column(String(length=20), nullable=False, unique=True)
     # 所在的视频源monitor编号
     monitor_id = Column(Integer, ForeignKey(monitor.Monitor.id))
 
@@ -23,3 +25,8 @@ class Area(Base):
 
     # 所在的monitor
     monitors = relationship('Monitor', backref='areas')
+
+    def __repr__(self):
+        _id = self.id
+        _monitor_id = self.monitor_id
+        return f"Area: id:{_id}, monitor_id:{_monitor_id}"

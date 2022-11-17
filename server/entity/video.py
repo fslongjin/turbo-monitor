@@ -31,7 +31,11 @@ class Video(Base):
     monitors = relationship('Monitor', backref='videos')
     # 包含的事件
     events = relationship('Event', backref='videos')
-    # 查看的保安
-    users = relationship('User', backref='videos')
-    # 查看的管理员
-    managers = relationship('Manager', backref='videos')
+
+    def __repr__(self):
+        _id = self.id
+        _date = self.date
+        _video_stream = self.video_stream
+        _event_id = self.event_id
+        _monitor_id = self.monitor_id
+        return f"Video: id:{_id}, date:{_date}, video_stream:{_video_stream},event_id:{_event_id}, monitor_id:{_monitor_id}"

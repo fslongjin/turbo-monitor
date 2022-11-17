@@ -17,6 +17,12 @@ class ManagerCheckVideo(Base):
     # 编号
     id = Column(Integer, primary_key=True, autoincrement=True)
     # manager编号
-    user_id = Column(Integer, ForeignKey(manager.Manager.id, ondelete="RESTRICT"))
+    manager_id = Column(Integer, ForeignKey(manager.Manager.id, ondelete="RESTRICT"))
     # 录像编号
     video_id = Column(Integer, ForeignKey(video.Video.id, ondelete="RESTRICT"))
+
+    def __repr__(self):
+        _id = self.id
+        _manager_id = self.user_id
+        _video_id = self.video_id
+        return f"ManagerCheckVideo: id:{_id}, manager_id:{_manager_id}, video_id:{_video_id}"

@@ -20,3 +20,10 @@ class Event(Base):
     type = Column(String(length=20), nullable=False)
     # 描述
     description = Column(String(length=100))
+
+    def __repr__(self):
+        _id = self.id
+        _date = self.date
+        _type = self.type
+        _description = self.description
+        return f"Event: id:{_id}, date:{_date}, type:{_type}, description:{_description}"

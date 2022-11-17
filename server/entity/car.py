@@ -17,7 +17,7 @@ class Car(Base):
     # 编号
     id = Column(Integer, primary_key=True, autoincrement=True)
     # 车牌号
-    number = Column(String(length=20), nullable=False)
+    number = Column(String(length=20), nullable=False, unique=True)
     # 设别本车辆的门禁设备
     device_id = Column(Integer, ForeignKey(device.Device.id, ondelete="RESTRICT"))
 
@@ -25,5 +25,9 @@ class Car(Base):
 
     # 识别设备
     devices = relationship('Device', backref='cars')
-    # 出现的录像
-    videos = relationship('Video', backref='cars')
+
+    def __repr__(self):
+        _id = self.id
+        _number = self.number
+        _device_id = self.device_id
+        return f"Car: id:{_id}, number:{_number}, device_id:{_device_id}"
