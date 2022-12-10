@@ -1,1 +1,0 @@
-docker run --rm -it -p 1935:1935 -p 1985:1985 -p 8080:8080 -v /home/windinsoul/Desktop/conf/example.conf:/usr/local/srs/conf/docker.conf -v /home/windinsoul/Desktop/video:/usr/local/srs/objs/nginx/html/ registry.cn-hangzhou.aliyuncs.com/ossrs/srs:4 ./objs/srs -c conf/docker.conf
